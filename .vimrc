@@ -3,6 +3,18 @@ if v:progname =~? "evim"
   finish
 endif
 
+let mapleader = " "
+
+call plug#begin()
+" List your plugins here
+Plug 'preservim/nerdtree' |Plug 'tpope/vim-sensible'
+Plug 'preservim/nerdtree' |
+            \ Plug 'Xuyuanp/nerdtree-git-plugin'
+call plug#end()
+
+nnoremap <leader>t :NERDTreeToggle<CR>
+
+
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 " Avoid side effects when it was already reset.
@@ -16,9 +28,17 @@ silent! while 0
   set nocompatible
 silent! endwhile
 
-" Allow backspacing over everything in insert mode.
-set backspace=indent,eol,start
+if $TERM == "xterm-kitty"
+    " Change the cursor in different modes
+    " Block cursor in normal mode
+    let &t_EI = "\e[2 q"
+    " I-beam cursor in insert mode
+    let &t_SI = "\e[6 q"
+    " Underline cursor in replace mode
+    let &t_SR = "\e[4 q"
+endif
 
+" Allow backspacing over everything in insert mode.
 "set ai			" always set autoindenting on
 "set backup		" keep a backup file
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
@@ -30,6 +50,7 @@ set wildmenu		" display completion matches in a status line
 set foldmethod=manual
 set ttimeout		" time out for key codes
 set ttimeoutlen=100	" wait up to 100ms after Esc for special key
+set tabstop=4		" set default tab size
 
 " Show @@@ in the last line if it is truncated.
 set display=truncate
@@ -126,3 +147,4 @@ let &guicursor = &guicursor . ",a:blinkon0"
 if filereadable("/etc/vimrc.local")
   source /etc/vimrc.local
 endif
+

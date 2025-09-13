@@ -1,28 +1,30 @@
 * {
     font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 0.5);
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
-    transition-property: background-color;
-    transition-duration: .5s;
+    /*background-color: rgba(43, 48, 59, 0.5);*/
+	background-color: transparent;
+    /*border-bottom: 3px solid rgba(100, 114, 125, 0.5);*/
+    border-bottom: transparent;
+	color: #ffffff;
+    /*transition-property: background-color;*/
+    /*transition-duration: .5s;*/
 }
 
 window#waybar.hidden {
     opacity: 0.2;
 }
 
-/*
 window#waybar.empty {
     background-color: transparent;
 }
+
 window#waybar.solo {
     background-color: #FFFFFF;
 }
-*/
+
 
 window#waybar.termite {
     background-color: #3F3F3F;
@@ -47,10 +49,10 @@ button:hover {
     box-shadow: inset 0 -3px #ffffff;
 }
 
-/* you can set a style on hover for any module like this */
+/* you can set a style on hover for any module like this 
 #pulseaudio:hover {
     background-color: #a37800;
-}
+}*/
 
 #workspaces button {
     padding: 0 5px;
@@ -113,12 +115,18 @@ button:hover {
 }
 
 #clock {
-    background-color: #64727D;
+    background-color: transparent;
+}
+
+#taskbar {
+	background-color: #000000;
+    border: 2 solid black;
+    border-radius: 10px;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: #000000;
+	color: #ffffff;
+    background-color: transparent;
 }
 
 #battery.charging, #battery.plugged {
@@ -168,24 +176,24 @@ label:focus {
 }
 
 #cpu {
-    background-color: #2ecc71;
+    background-color: transparent;
     color: #000000;
 }
 
 #memory {
-    background-color: #9b59b6;
+    background-color: transparent;
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: transparent;
 }
 
 #backlight {
-    background-color: #90b1b1;
+    background-color: transparent;
 }
 
 #network {
-    background-color: #2980b9;
+    background-color: transparent;
 }
 
 #network.disconnected {
@@ -226,7 +234,7 @@ label:focus {
 }
 
 #temperature {
-    background-color: #f0932b;
+    background-color: transparent;
 }
 
 #temperature.critical {
@@ -247,7 +255,7 @@ label:focus {
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: transparent;
 }
 
 #idle_inhibitor.activated {

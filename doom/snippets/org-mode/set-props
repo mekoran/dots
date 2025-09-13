@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: set-props
+# key: .prop
+# --
+
+#+todo: ${1:title}
+#+tags: ${2:tags}
+
+$0

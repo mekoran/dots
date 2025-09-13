@@ -1,0 +1,5 @@
+# key: .orgtemp
+# name: org-template
+# --
+("${1:id}" "${2:title}" ${2:$$(yas-choose-value '("entry" "item" "table-line" "plain"))} (file "~/Documents/scratch.org")
+ "$0")

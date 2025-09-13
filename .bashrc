@@ -1,5 +1,9 @@
 # .bashrc
 
+export EDITOR="/usr/bin/vim"
+export PATH="$HOME/.emacs.d/bin:$PATH"
+export DOOMDIR="$HOME/dots/doom"
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
