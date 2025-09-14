@@ -26,7 +26,23 @@
 *** configure todos
 #+BEGIN_SRC emacs-lisp
 (setq org-todo-keywords
-  '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE")))
+      '((sequence "TODO(t!)" "DOING(d!)" "|" "DONE(d!)")
+        (sequence "ORDERED(!)" "SHIPPED(!)" "|" "COMPLETE(!)")
+        (sequence "|" "CANCELED(c@/!)")
+        (sequence "WAITING(w@/!)")
+        (sequence "BLOCKED(b@/!)")
+        ))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("ORDERED" . "SlateBlue")
+        ("DOING" . "DarkOrchid")
+        ("SHIPPED" . "Teal")
+        ("BLOCKED" . "Firebrick")
+        ("WAITING" . "Teal")
+        ("DONE" . "ForestGreen")
+        ("COMPLETE" . "ForestGreen")
+        ("CANCELED" . "Grey")
+        ))
 #+END_SRC
 *** configure tags
 #+begin_src emacs-lisp
@@ -43,16 +59,16 @@ List of available properties: https://orgmode.org/manual/Template-elements.html
 (after! org
   (setq org-capture-templates
         (setq org-capture-templates
-                '(("t" "Todo" entry (file+headline "~/Documents/todo.org" "Tasks")
-                   "* TODO %?\n  %u %a"
+               '(("t" "Todo" entry (file+headline "~/Documents/todo.org" "Tasks")
+                   "* TODO %?\n %u %a"
                    :empty-lines 0
                    :kill-buffer t)
                   ("j" "Journal" entry (file+datetree "~/Documents/journal.org")
-                   "* %?\nEntered on %U\n  >%i\n  %a"
+                   "* %?\nEntered on %U\n >%i\n %a"
                    :empty-lines 0
                    :kill-buffer t)
                   ("s" "Shortcut" table-line (file+headline "~/Documents/ref-tables.org" "keybinds")
-                   "|%?| | %^{system|Emacs|niri} |")
+                   "| %? |  | %^{system|Emacs|niri} |")
     )))
 )
 ;(setq org-capture-templates-contexts
@@ -69,6 +85,11 @@ List of available properties: https://orgmode.org/manual/Template-elements.html
 #+END_SRC
 * Keybinds
 #+BEGIN_SRC emacs-lisp
+(keyboard-translate ?\C-d ?\C-x)
+(keyboard-translate ?\C-x ?\C-d)
 (global-set-key (kbd "M-t") #'treemacs)
+(global-set-key (kbd "M-o") #'other-window)
+(global-set-key (kbd "M-d") #'execute-extended-command)
+(global-set-key (kbd "C-c c") #'org-capture)
 #+END_SRC
 ** org-mode keybinds

@@ -9,7 +9,18 @@
 (setq org-directory "~/Documents/")
 
 (setq org-todo-keywords
-  '((sequence "TODO" "IN-PROGRESS" "WAITING" "|" "DONE")))
+      '((sequence "TODO" "DOING" "WAITING" "|" "DONE")
+        (sequence "ORDERED" "SHIPPED" "|" "COMPLETE")
+        ))
+(setq org-todo-keyword-faces
+      '(("TODO" . org-warning)
+        ("ORDERED" . "SlateBlue")
+        ("DOING" . "DarkOrchid")
+        ("SHIPPED" . "DarkOrchid")
+        ("WAITING" . "Teal")
+        ("DONE" . "ForestGreen")
+        ("COMPLETE" . "ForestGreen")
+        ))
 
 ;;(setq org-tag-alist '(("@work" . ?w) ("@home" . ?h) ("laptop" . ?l)))
 
@@ -18,7 +29,7 @@
 (after! org
   (setq org-capture-templates
         (setq org-capture-templates
-                '(("t" "Todo" entry (file+headline "~/Documents/todo.org" "Tasks")
+               '(("t" "Todo" entry (file+headline "~/Documents/todo.org" "Tasks")
                    "* TODO %?\n  %u %a"
                    :empty-lines 0
                    :kill-buffer t)
@@ -40,4 +51,9 @@
 (setq evil-visual-state-cursor 'box)
 (setq evil-replace-state-cursor '(hollow "yellow"))
 
+(keyboard-translate ?\C-d ?\C-x)
+(keyboard-translate ?\C-x ?\C-d)
 (global-set-key (kbd "M-t") #'treemacs)
+(global-set-key (kbd "M-o") #'other-window)
+(global-set-key (kbd "M-d") #'execute-extended-command)
+(global-set-key (kbd "C-c c") #'org-capture)
