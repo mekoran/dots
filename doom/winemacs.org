@@ -1,4 +1,4 @@
-#+title: My Emacs Configuration
+#+title: My Windows Emacs Configuration
 #+options: num:nil
 #+tags: config
 #+todo: TODO DONE
@@ -6,22 +6,17 @@
 * Core packages & setup
 ** Indentations
 #+BEGIN_SRC emacs-lisp
-;(global-aggressive-indent-mode 1)
-;(add-to-list 'aggressive-indent-excluded-modes 'html-mode)
 (setq-default tab-width 4)
 #+END_SRC
 * Appearance
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-oceanic-next)
+;(load-theme 'your-theme-name t)
 #+end_src
 * Module configuration
-** snippets
-#+begin_src emacs-lisp
-#+end_src
 ** org configuration
 *** set default directory
 #+BEGIN_SRC emacs-lisp
-(setq org-directory "~/org/")
+(setq org-directory "C:/Users/mkoran/OneDrive - Epic/org/")
 #+END_SRC
 *** configure todos
 #+BEGIN_SRC emacs-lisp
@@ -50,7 +45,7 @@
 #+end_src
 *** configure capture
 #+BEGIN_SRC emacs-lisp
-(setq org-default-notes-file (concat org-directory "~/org/notes.org"))
+(setq org-default-notes-file (concat org-directory "C:/Users/mkoran/OneDrive - Epic/org/notes.org"))
 #+END_SRC
 *** configure templates
 ("1" "title" type (target) :properties "template")
@@ -59,15 +54,15 @@ List of available properties: https://orgmode.org/manual/Template-elements.html
 (after! org
   (setq org-capture-templates
         (setq org-capture-templates
-               '(("t" "Todo" entry (file+headline "~/org/todo.org" "Tasks")
+               '(("t" "Todo" entry (file+headline "C:/Users/mkoran/OneDrive - Epic/org/todo.org" "Tasks")
                    "* TODO %?\n %u %a"
                    :empty-lines 0
                    :kill-buffer t)
-                  ("j" "Journal" entry (file+datetree "~/org/journal.org")
+                  ("j" "Journal" entry (file+datetree "C:/Users/mkoran/OneDrive - Epic/org/journal.org")
                    "* %?\nEntered on %U\n >%i\n %a"
                    :empty-lines 0
                    :kill-buffer t)
-                  ("s" "Shortcut" table-line (file+headline "~/org/ref-tables.org" "keybinds")
+                  ("s" "Shortcut" table-line (file+headline "C:/Users/mkoran/OneDrive - Epic/org/ref-tables.org" "keybinds")
                    "| %? |  |  |")
     ))))
 ;(setq org-capture-templates-contexts
@@ -84,11 +79,9 @@ List of available properties: https://orgmode.org/manual/Template-elements.html
 #+END_SRC
 * Keybinds
 #+BEGIN_SRC emacs-lisp
-;(keyboard-translate ?\C-d ?\C-x)
+(keyboard-translate ?\C-d ?\C-x)
 ;(keyboard-translate ?\C-x ?\C-d)
-(global-set-key (kbd "M-t") #'treemacs)
-(global-set-key (kbd "M-o") #'other-window)
-(global-set-key (kbd "M-d") #'execute-extended-command)
-(global-set-key (kbd "C-c c") #'org-capture)
+(global-set-key (kbd "M-o") 'other-window)
+(global-set-key (kbd "M-d") 'execute-extended-command)
+(global-set-key (kbd "C-c c") 'org-capture)
 #+END_SRC
-** org-mode keybinds
