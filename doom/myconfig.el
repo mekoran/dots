@@ -55,8 +55,8 @@
 (setq evil-visual-state-cursor 'box)
 (setq evil-replace-state-cursor '(hollow "yellow"))
 
-(keyboard-translate ?\C-d ?\C-x)
-(keyboard-translate ?\C-x ?\C-d)
+;(keyboard-translate ?\C-d ?\C-x)
+;(keyboard-translate ?\C-x ?\C-d)
 (global-set-key (kbd "M-t") #'treemacs)
 (global-set-key (kbd "M-o") #'other-window)
 (global-set-key (kbd "M-d") #'execute-extended-command)
